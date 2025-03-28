@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online MASM Compiler (Example)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <span class="filename">main.asm</span>
+        </div>
+        <div class="header-right">
+            <button class="action-button">Run</button>
+            <button class="action-button">Clear</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="editor-container">
+            <textarea id="editor">TITLE Program Template     (template.asm)
+
+; Author(s):
+; Course / Project ID                 Date:
+; Description:
+
+INCLUDE Irvine32.inc
+
+; (insert constant definitions here)
+
+.data
+
+; (insert variable definitions here)
+
+.code
+main PROC
+
+; (insert executable instructions here)
+
+	exit	; exit to operating system
+main ENDP
+
+; (insert additional procedures here)
+
+END main
+</textarea>
+        </div>
+        <div class="output-container">
+            <div class="output-header">Output</div>
+            <pre id="output"></pre>
+        </div>
+    </main>
+
+</body>
+</html>
