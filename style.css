@@ -132,17 +132,28 @@ body {
     box-sizing: border-box;
     white-space: pre-line;
     user-select: none;
-    /* Ensure identical line-height and font properties */
-    line-height: 1.4;    /* *Match textarea value* */
-    /* No extra margins or padding */
+    line-height: 1.4;
     margin: 0;
     padding: 0;
+    /* Ensure font-weight is normal */
+    font-weight: normal;
+    /* Try font-smoothing (may not work in all browsers) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 }
 
 #line-numbers-container {
-    display: block;  /* Ensure it's a block-level element */
+    display: block;
     transform: translateY(5px);
+     /* Ensure font-weight is normal */
+    font-weight: normal;
+}
+
+/* Individual Line Number */
+.line-number {
+    /* Ensure font-weight is normal */
+    font-weight: normal;
 }
 
 .code-editor, .output-area {
@@ -167,10 +178,13 @@ textarea {
     outline: none;
     box-sizing: border-box;
     background-color: #f8f9fa;
-    line-height: 1.4;  /*Line Height added and matched */
-    /* No extra margins or padding */
+    line-height: 1.4;
     margin: 0;
     padding: 0;
-   /* Try adjusting this value to fine-tune the alignment */
     vertical-align: top;
+    /* Ensure font-weight is normal */
+    font-weight: normal;
+    /* Try font-smoothing (may not work in all browsers) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
