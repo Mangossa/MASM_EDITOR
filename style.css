@@ -1,73 +1,169 @@
 body {
-    font-family: monospace;
+    font-family: sans-serif;
     margin: 0;
-    background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full viewport height */
+    padding: 0;
+    background-color: #f8f9fa;
+    height: 100vh;
+    overflow: hidden;
 }
 
-header {
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 60px;
+    background-color: #fff;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    height: 100%;
+}
+
+.sidebar-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #495057;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    background-color: transparent;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.sidebar-icon:hover {
+    background-color: #e9ecef;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Top Bar */
+.top-bar {
     background-color: #fff;
     padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
 }
 
-.header-left {
+.file-name {
     font-weight: bold;
+    color: #495057;
 }
 
-.header-right {
+.top-buttons {
     display: flex;
-    gap: 10px;
+    align-items: center;
 }
 
-.action-button {
-    background-color: #007bff; /* Example: Blue */
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
+.top-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 5px;
     cursor: pointer;
 }
 
-main {
+.top-button:hover {
+    background-color: #e9ecef;
+}
+
+.run-button {
+    background-color: #17a2b8; /* Teal/Cyan */
+    color: white;
+    border-color: #17a2b8;
+}
+
+.run-button:hover {
+    background-color: #138496;
+}
+
+.clear-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.clear-button:hover {
+    background-color: #e9ecef;
+}
+
+.output-label{
+    padding: 8px 12px;
+    margin-left: 5px;
+}
+
+/* Editor Area */
+.editor-area {
     display: flex;
-    flex: 1; /* Take up remaining vertical space */
-}
-
-.editor-container {
     flex: 1;
-    padding: 10px;
+    height: 100%;
 }
 
-.output-container {
+.line-numbers {
+    width: 30px;
+    background-color: #eee;
+    color: #888;
+    font-size: 14px;
+    font-family: monospace;
+    padding: 10px 5px;
+    text-align: right;
+    box-sizing: border-box;
+    white-space: pre-line;
+    user-select: none;
+    /* Removed flexbox properties */
+}
+
+#line-numbers-container {
+    display: block;  /* Ensure it's a block-level element */
+  transform: translateY(5px);
+}
+
+.code-editor, .output-area {
     flex: 1;
-    padding: 10px;
-    border-left: 1px solid #ddd;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.output-header {
-    font-weight: bold;
-    margin-bottom: 5px;
+.code-editor {
+    border-right: 1px solid #dee2e6;
 }
 
-#editor {
+textarea {
     width: 100%;
-    height: 95%;
-    font-family: monospace;
-    font-size: 14px;
+    height: 100%;
+    border: none;
     padding: 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box; /* Include padding/border in width/height */
-    resize: none; /* Prevent resizing */
-}
-
-#output {
-    white-space: pre-wrap; /* Preserve formatting and wrap */
     font-family: monospace;
     font-size: 14px;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    line-height: 1.4;  /*Line Height added*/
+
+   /* Try adjusting this value to fine-tune the alignment */
+    vertical-align: top;
 }
