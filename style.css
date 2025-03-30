@@ -145,7 +145,7 @@ body {
 
 #line-numbers-container {
     display: block;
-    transform: translateY(5px);
+    transform: translateY(0px);
      /* Ensure font-weight is normal */
     font-weight: normal;
 }
