@@ -135,19 +135,19 @@ body {
     line-height: 1.4;
     margin: 0;
     padding: 0;
-    /* Ensure font-weight is normal */
     font-weight: normal;
-    /* Try font-smoothing (may not work in all browsers) */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
+    /* IMPORTANT: Ensure the line numbers scroll */
+    overflow-y: scroll;
+    height: 100%;
 }
 
 #line-numbers-container {
     display: block;
     transform: translateY(0px);
-     /* Ensure font-weight is normal */
     font-weight: normal;
+
 }
 
 /* Individual Line Number */
@@ -182,9 +182,9 @@ textarea {
     margin: 0;
     padding: 0;
     vertical-align: top;
-    /* Ensure font-weight is normal */
     font-weight: normal;
-    /* Try font-smoothing (may not work in all browsers) */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Enable scrolling */
+    overflow: auto;
 }
