@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Compiler</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -16,7 +18,9 @@
             <button class="sidebar-icon"><i class="fas fa-cog"></i></button>
             <button class="sidebar-icon"><i class="fas fa-coffee"></i></button>
             <button class="sidebar-icon"><i class="fab fa-cuttlefish"></i></button>
-           
+            <button class="sidebar-icon"><i class="fab fa-js"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-dharmachakra"></i></button>
+            <button class="sidebar-icon"><i class="fab fa-php"></i></button>
         </div>
 
         <div class="main-content">
@@ -34,12 +38,13 @@
 
             <div class="editor-area">
                 <div class="line-numbers">
-                    <div id="line-numbers-container">1</div> <!-- Initial line number -->
+                    <div id="line-numbers-container">1</div>
                 </div>
                 <div class="code-editor">
                     <textarea id="code-editor" placeholder="// Online C++ compiler..."></textarea>
                 </div>
-                <div class="output-area">
+                <div class="output-area" id="output-area-container">
+                    <button class="collapse-button" id="collapse-output">Collapse</button>
                     <textarea id="output-area" readonly placeholder=""></textarea>
                 </div>
             </div>
@@ -49,4 +54,5 @@
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
