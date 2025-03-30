@@ -122,7 +122,7 @@ body {
 }
 
 .line-numbers {
-    width: 30px;
+    width: 40px; /* Increased width for 4 digits */
     background-color: #eee;
     color: #888;
     font-size: 14px;
@@ -138,7 +138,6 @@ body {
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* IMPORTANT: Ensure the line numbers scroll */
     overflow-y: scroll;
     height: 100%;
 }
