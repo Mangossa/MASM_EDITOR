@@ -1,55 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Online MASM Compiler (Example)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Compiler</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="header-left">
-            <span class="filename">main.asm</span>
+    <div class="container">
+        <div class="sidebar">
+            <button class="sidebar-icon"><i class="fas fa-file-code"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-chart-bar"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-database"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-cog"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-coffee"></i></button>
+            <button class="sidebar-icon"><i class="fab fa-cuttlefish"></i></button>
+           
         </div>
-        <div class="header-right">
-            <button class="action-button">Run</button>
-            <button class="action-button">Clear</button>
+
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="file-name">main.cpp</div>
+                <div class="top-buttons">
+                    <button class="top-button"></button>
+                    <button class="top-button"></button>
+                    <button class="top-button"></button>
+                    <button class="top-button run-button">Run</button>
+                    <div class="output-label">Output</div>
+                    <button class="top-button clear-button">Clear</button>
+                </div>
+            </div>
+
+            <div class="editor-area">
+                <div class="line-numbers">
+                    <div id="line-numbers-container">1</div> <!-- Initial line number -->
+                </div>
+                <div class="code-editor">
+                    <textarea id="code-editor" placeholder="// Online C++ compiler..."></textarea>
+                </div>
+                <div class="output-area">
+                    <textarea id="output-area" readonly placeholder=""></textarea>
+                </div>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <div class="editor-container">
-            <textarea id="editor">TITLE Program Template     (template.asm)
-
-; Author(s):
-; Course / Project ID                 Date:
-; Description:
-
-INCLUDE Irvine32.inc
-
-; (insert constant definitions here)
-
-.data
-
-; (insert variable definitions here)
-
-.code
-main PROC
-
-; (insert executable instructions here)
-
-	exit	; exit to operating system
-main ENDP
-
-; (insert additional procedures here)
-
-END main
-</textarea>
-        </div>
-        <div class="output-container">
-            <div class="output-header">Output</div>
-            <pre id="output"></pre>
-        </div>
-    </main>
-
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
