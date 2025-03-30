@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let lineNumbersHTML = '';
         for (let i = 1; i <= lines.length; i++) {
-            const lineNumber = String(i).padStart(3, ' ');
+            const lineNumber = String(i).padStart(4, ' ');
             lineNumbersHTML += `<div class="line-number">${lineNumber}</div>`;
         }
 
