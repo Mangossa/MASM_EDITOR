@@ -26,13 +26,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Collapse/Expand output area
+    let isCollapsed = false; // Track collapse state
+
     collapseButton.addEventListener('click', () => {
-        if (outputAreaContainer.style.flex === "0") {
-            outputAreaContainer.style.flex = "1"; // Expand
-            collapseButton.textContent = "Collapse";
-        } else {
+        isCollapsed = !isCollapsed; // Toggle the state
+        if (isCollapsed) {
             outputAreaContainer.style.flex = "0"; // Collapse
             collapseButton.textContent = "Expand";
+        } else {
+            outputAreaContainer.style.flex = "1"; // Expand
+            collapseButton.textContent = "Collapse";
+        }
+    });
+
+    // Handle Tab key in textarea
+    codeEditor.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') { // Use e.key instead of e.keyCode
+            e.preventDefault(); // Prevent default tab behavior
+
+            const start = this.selectionStart;
+            const end = this.selectionEnd;
+
+            // Insert tab character
+            this.value = this.value.substring(0, start) +
+                "\t" +
+                this.value.substring(end);
+
+            // Move cursor to the right spot
+            this.selectionStart =
+                this.selectionEnd = start + 1;
+
+            updateLineNumbers(); // Update line numbers after tab insertion
         }
     });
 
