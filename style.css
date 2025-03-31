@@ -209,3 +209,11 @@ textarea {
 .collapse-button:hover {
     background-color: #e9ecef;
 }
+.output-area {
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative; /* For positioning the collapse button */
+    transition: flex 0.3s ease; /* Add a transition for smooth animation */
+}
