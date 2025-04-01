@@ -164,8 +164,9 @@ body {
     /* padding-top: 10px; */ /* Keep this removed or commented out */
     box-sizing: border-box;
     /* Add the following two lines: */
-    position: relative;
-    top: -50px; /* Adjust this value (-1px, -3px, etc.) as needed */
+    position: relative; 
+    transform: translateY(-20px);
+    
 }
 
 /* Individual Line Number */
