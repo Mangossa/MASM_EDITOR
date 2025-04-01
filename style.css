@@ -8,20 +8,30 @@ body {
 }
 
 .container {
-    display: flex;
+    display: flex; /* Still useful for structuring main-content */
     height: 100%;
+    /* Position relative might be useful if you ever want absolute positioning inside */
+    position: relative;
 }
 
-/* Sidebar */
+/* Sidebar - MODIFIED FOR BOTTOM-LEFT */
 .sidebar {
-    width: 70px;
+    width: 70px; /* Keep width consistent */
     background-color: #fff;
-    border-right: 1px solid #dee2e6;
+    /* border-right: 1px solid #dee2e6; /* Remove right border */
+    border-top: 1px solid #dee2e6; /* Add top border */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
-    height: 100%;
+    padding-top: 10px; /* Keep some padding */
+    padding-bottom: 10px; /* Add padding at the bottom */
+    /* height: 100%; /* Remove fixed height */
+    height: auto; /* Set height to auto */
+
+    position: fixed; /* Position fixed relative to viewport */
+    bottom: 0;       /* Align to bottom */
+    left: 0;         /* Align to left */
+    z-index: 1000;   /* Ensure it's on top */
 }
 
 .sidebar-icon {
@@ -37,21 +47,23 @@ body {
     background-color: transparent;
     outline: none;
     box-sizing: border-box;
+    font-size: 18px; /* Slightly larger icons might look better */
 }
 
 .sidebar-icon:hover {
     background-color: #e9ecef;
 }
 
-/* Main Content */
+/* Main Content - MODIFIED FOR SIDEBAR */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-left: 70px; /* Add margin to avoid overlap with fixed sidebar */
 }
 
-/* Top Bar */
+/* Top Bar - (No changes needed here for this request) */
 .top-bar {
     background-color: #fff;
     padding: 10px 20px;
@@ -114,12 +126,17 @@ body {
     margin-left: 5px;
 }
 
-/* Editor Area */
+/* Editor Area - (No changes needed here for this request) */
 .editor-area {
     display: flex;
     flex: 1;
-    height: 100%;
+    /* Height calculation might need adjustment depending on final layout */
+    /* Consider using calc(100% - height_of_top_bar) if needed */
+    /* For now, flex: 1 should work within the column flex container */
+     height: calc(100% - 49px); /* Approximate height: 100% - top-bar height */
+     /* You might need to calculate the top-bar height more accurately */
 }
+
 
 .line-numbers {
     width: 40px;
@@ -127,41 +144,46 @@ body {
     color: #888;
     font-size: 14px;
     font-family: monospace;
-    padding: 10px 5px;
+    padding: 10px 5px; /* Ensure top padding matches textarea */
     text-align: right;
     box-sizing: border-box;
-    white-space: pre-line;
+    white-space: pre; /* Use pre instead of pre-line for better control */
     user-select: none;
-    line-height: 1.4;
-    margin: 0;
-    padding: 0;
+    line-height: 1.4; /* Match textarea */
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* IMPORTANT: Remove scrolling from the line numbers */
     overflow: hidden; /* Remove the scrollbar */
-    height: 100%;
+    /* height: 100%; Removed, let it size naturally with editor area */
 }
+
 
 #line-numbers-container {
     display: block;
-    transform: translateY(0px);
+    /* transform: translateY(0px); /* Probably unnecessary */
     font-weight: normal;
+    padding-top: 10px; /* Match textarea top padding */
+    box-sizing: border-box;
 }
 
 /* Individual Line Number */
 .line-number {
-    /* Ensure font-weight is normal */
     font-weight: normal;
+    height: calc(14px * 1.4); /* Match line-height * font-size */
+    display: block; /* Ensure block display */
+    box-sizing: border-box;
 }
+
 
 .code-editor,
 .output-area {
     flex: 1;
-    padding: 20px;
-    height: 100%;
+    /* Removed padding: 20px */
+    height: 100%; /* Let editor-area control height */
     box-sizing: border-box;
     position: relative; /* For positioning the collapse button */
+    display: flex; /* Use flex to make textarea fill */
+    flex-direction: column; /* Stack elements like collapse button */
 }
 
 .code-editor {
@@ -170,7 +192,8 @@ body {
 
 textarea {
     width: 100%;
-    height: 100%;
+    /* height: 100%; Let parent flex control height */
+    flex-grow: 1; /* Allow textarea to grow */
     border: none;
     padding: 10px;
     font-family: monospace;
@@ -181,21 +204,20 @@ textarea {
     background-color: #f8f9fa;
     line-height: 1.4;
     margin: 0;
-    padding: 0;
-    vertical-align: top;
+    /* vertical-align: top; Not needed with flex */
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: auto;      /* Enable horizontal scrolling */
-    white-space: nowrap;   /* Prevent wrapping */
-    overflow-y: scroll;     /* Keep vertical scroll */
+    overflow-x: auto;    /* Enable horizontal scrolling */
+    white-space: pre;    /* Use pre for tabs and spaces */
+    overflow-y: scroll;    /* Keep vertical scroll */
 }
 
 /* Collapse Button */
 .collapse-button {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 10px; /* Position relative to output-area */
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
     color: #495057;
@@ -209,11 +231,27 @@ textarea {
 .collapse-button:hover {
     background-color: #e9ecef;
 }
+
+/* Output Area specific styling (combined rule) */
 .output-area {
-    flex: 1;
-    padding: 20px;
-    height: 100%;
+    /* flex: 1; Already set */
+    /* padding: 20px; Removed */
+    /* height: 100%; Already set */
     box-sizing: border-box;
     position: relative; /* For positioning the collapse button */
-    transition: flex 0.3s ease; /* Add a transition for smooth animation */
+    transition: flex 0.3s ease, width 0.3s ease; /* Added width transition */
+}
+
+/* Add styles for when output is collapsed */
+.output-area.collapsed {
+    flex-grow: 0 !important;
+    flex-basis: 0 !important; /* Use flex-basis for collapsing */
+    width: 0; /* Collapse width */
+    padding: 0; /* Remove padding when collapsed */
+    overflow: hidden; /* Hide content when collapsed */
+    border-left: none; /* Hide border if needed */
+}
+
+.output-area.collapsed > * {
+    display: none; /* Hide children like textarea/button */
 }
