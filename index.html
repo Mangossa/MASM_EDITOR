@@ -4,53 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online MASM Compiler</title>
+    <title>Online Compiler</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Removed Font Awesome script link as icons are replaced with images -->
-    <!-- If you need Font Awesome for other things, you can keep it -->
 </head>
 
 <body>
 
     <div class="container">
         <div class="sidebar">
-            <!-- Sidebar icons using images, moved to bottom via CSS -->
-            <button class="sidebar-icon" title="Files">
-                <img src="icons/file.png" alt="Files">
-            </button>
-            <button class="sidebar-icon" title="Stats">
-                <img src="icons/chart.png" alt="Stats">
-            </button>
-            <button class="sidebar-icon" title="Data">
-                <img src="icons/database.png" alt="Data">
-            </button>
-            <button class="sidebar-icon" title="Settings">
-                <img src="icons/cog.png" alt="Settings">
-            </button>
-             <button class="sidebar-icon" title="Coffee">
-                <img src="icons/coffee.png" alt="Coffee">
-            </button>
-             <button class="sidebar-icon" title="Cuttlefish">
-                <img src="icons/cuttlefish.png" alt="Cuttlefish">
-            </button>
-             <button class="sidebar-icon" title="JavaScript">
-                <img src="icons/js.png" alt="JavaScript">
-            </button>
-             <button class="sidebar-icon" title="Dharma">
-                <img src="icons/dharmachakra.png" alt="Dharma">
-            </button>
-            <button class="sidebar-icon" title="PHP">
-                <img src="icons/php.png" alt="PHP">
-            </button>
+            <button class="sidebar-icon"><i class="fas fa-file-code"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-chart-bar"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-database"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-cog"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-coffee"></i></button>
+            <button class="sidebar-icon"><i class="fab fa-cuttlefish"></i></button>
+            <button class="sidebar-icon"><i class="fab fa-js"></i></button>
+            <button class="sidebar-icon"><i class="fas fa-dharmachakra"></i></button>
+            <button class="sidebar-icon"><i class="fab fa-php"></i></button>
         </div>
 
         <div class="main-content">
             <div class="top-bar">
-                <div class="file-name">main.asm</div> <!-- Changed to .asm for MASM -->
+                <div class="file-name">main.cpp</div>
                 <div class="top-buttons">
-                    <button class="top-button"></button> <!-- Placeholder -->
-                    <button class="top-button"></button> <!-- Placeholder -->
-                    <button class="top-button"></button> <!-- Placeholder -->
+                    <button class="top-button"></button>
+                    <button class="top-button"></button>
+                    <button class="top-button"></button>
                     <button class="top-button run-button">Run</button>
                     <div class="output-label">Output</div>
                     <button class="top-button clear-button">Clear</button>
@@ -62,31 +41,18 @@
                     <div id="line-numbers-container">1</div>
                 </div>
                 <div class="code-editor">
-                    <!-- Changed placeholder for MASM -->
-                    <textarea id="code-editor" placeholder="; Online MASM compiler...
-
-.MODEL SMALL
-.STACK 100h
-
-.CODE
-MAIN PROC
-    ; Your code here
-    MOV AH, 4Ch ; Exit program
-    INT 21h
-MAIN ENDP
-END MAIN"></textarea>
+                    <textarea id="code-editor" placeholder="// Online C++ compiler..."></textarea>
                 </div>
-                <!-- Output Area Container -->
                 <div class="output-area" id="output-area-container">
-                     <!-- Collapse button will have its content set by JS -->
-                    <button class="collapse-button" id="collapse-output"></button>
-                    <textarea id="output-area" readonly placeholder="Output will appear here..."></textarea>
+                    <button class="collapse-button" id="collapse-output">Collapse</button>
+                    <textarea id="output-area" readonly placeholder=""></textarea>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
