@@ -129,7 +129,7 @@ body {
 .editor-area {
     display: flex;
     flex: 1;
-    height: 100%;
+    height: calc(100% - 60px); /* Subtract top bar height */
     /* Adjust top margin to account for fixed top bar */
     margin-top: 60px; /* Adjust as needed based on top bar height */
 }
@@ -152,13 +152,17 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+    /* Ensure it fills the height of the editor area */
     height: 100%;
 }
 
 #line-numbers-container {
     display: block;
-    transform: translateY(0px);
+    transform: translateY(5px);
     font-weight: normal;
+     /* Push line numbers to the very top */
+    position: relative;
+    top: 0;
 }
 
 /* Individual Line Number */
@@ -207,7 +211,7 @@ textarea {
 /* Collapse Button */
 .collapse-button {
     position: absolute;
-    top: 10px;
+    top: 10px; /* Keep it at the same Y level */
     left: 10px;
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
