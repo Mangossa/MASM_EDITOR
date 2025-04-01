@@ -6,30 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Compiler</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <div class="container">
         <div class="sidebar">
-            <button class="sidebar-icon"><i class="fas fa-file-code"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-chart-bar"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-database"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-cog"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-coffee"></i></button>
-            <button class="sidebar-icon"><i class="fab fa-cuttlefish"></i></button>
-            <button class="sidebar-icon"><i class="fab fa-js"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-dharmachakra"></i></button>
-            <button class="sidebar-icon"><i class="fab fa-php"></i></button>
-        </div>
-
+            <button class="sidebar-icon" aria-label="Files">
+                <i class="fas fa-folder-open"></i> </button>
+            <button class="sidebar-icon" aria-label="Search">
+                <i class="fas fa-search"></i> </button>
+            <button class="sidebar-icon" aria-label="Extensions">
+                <i class="fas fa-puzzle-piece"></i> </button>
+             <button class="sidebar-icon" aria-label="Save">
+                <i class="fas fa-save"></i> </button>
+            <button class="sidebar-icon" aria-label="Settings">
+                <i class="fas fa-cog"></i> </button>
+            </div>
         <div class="main-content">
             <div class="top-bar">
                 <div class="file-name">main.cpp</div>
                 <div class="top-buttons">
-                    <button class="top-button"></button>
-                    <button class="top-button"></button>
-                    <button class="top-button"></button>
+                    <button class="top-button">Save</button>
+                    <button class="top-button">Open</button>
+                    <button class="top-button">New</button>
                     <button class="top-button run-button">Run</button>
                     <div class="output-label">Output</div>
                     <button class="top-button clear-button">Clear</button>
@@ -52,7 +53,6 @@
     </div>
 
     <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</body>
+    </body>
 
 </html>
