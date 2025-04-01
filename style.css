@@ -22,6 +22,9 @@ body {
     align-items: center;
     padding-top: 10px;
     height: 100%;
+    /* Push icons to the bottom */
+    justify-content: flex-end; /* Aligns items to the bottom */
+    padding-bottom: 10px; /* Add some padding at the bottom */
 }
 
 .sidebar-icon {
@@ -59,6 +62,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* Make it fixed */
+    position: fixed;
+    top: 0;
+    left: 70px;  /* Match sidebar width */
+    width: calc(100% - 70px); /* Fill remaining width */
+    z-index: 100; /* Ensure it's on top of everything */
 }
 
 .file-name {
@@ -119,6 +128,8 @@ body {
     display: flex;
     flex: 1;
     height: 100%;
+    /* Adjust top margin to account for fixed top bar */
+    margin-top: 40px; /* Adjust as needed based on top bar height */
 }
 
 .line-numbers {
@@ -138,14 +149,13 @@ body {
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* IMPORTANT: Remove scrolling from the line numbers */
-    overflow: hidden; /* Remove the scrollbar */
+    overflow: hidden;
     height: 100%;
 }
 
 #line-numbers-container {
     display: block;
-    transform: translateY(0px);
+    transform: translateY(5px);
     font-weight: normal;
 }
 
@@ -162,6 +172,7 @@ body {
     height: 100%;
     box-sizing: border-box;
     position: relative; /* For positioning the collapse button */
+    transition: flex 0.3s ease; /* Add a transition for smooth animation */
 }
 
 .code-editor {
@@ -186,9 +197,9 @@ textarea {
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: auto;      /* Enable horizontal scrolling */
-    white-space: nowrap;   /* Prevent wrapping */
-    overflow-y: scroll;     /* Keep vertical scroll */
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: scroll;
 }
 
 /* Collapse Button */
@@ -208,12 +219,4 @@ textarea {
 
 .collapse-button:hover {
     background-color: #e9ecef;
-}
-.output-area {
-    flex: 1;
-    padding: 20px;
-    height: 100%;
-    box-sizing: border-box;
-    position: relative; /* For positioning the collapse button */
-    transition: flex 0.3s ease; /* Add a transition for smooth animation */
 }
