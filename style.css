@@ -60,13 +60,13 @@ body {
     padding: 10px 20px;
     border-bottom: 1px solid #dee2e6;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Alling everything to the left */
     align-items: center;
     /* Make it fixed */
     position: fixed;
     top: 0;
     left: 0;  /* Set left to 0 to shift to the left */
-    width: calc(100% - 0px); /* Set the width */
+    width: 100%; /* Set the width */
     z-index: 100; /* Ensure it's on top of everything */
     height: 60px; /* Set a height for the top bar */
 
@@ -80,6 +80,7 @@ body {
 .top-buttons {
     display: flex;
     align-items: center;
+    margin-left: auto; /* Push the buttons to the right */
 }
 
 .top-button {
@@ -100,6 +101,10 @@ body {
     background-color: #17a2b8; /* Teal/Cyan */
     color: white;
     border-color: #17a2b8;
+     /* Absolutely position the Run button over the code editor */
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .run-button:hover {
@@ -222,12 +227,11 @@ textarea {
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
     color: #495057;
-    padding: 2px 4px; /* Reduced padding */
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 10px; /* Reduced font size */
+    font-size: 14px;
     z-index: 10; /* Ensure it's on top */
-    line-height: 1; /* Adjust line-height for better icon alignment */
 }
 
 .collapse-button:hover {
