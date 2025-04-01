@@ -68,6 +68,8 @@ body {
     left: 70px;  /* Match sidebar width */
     width: calc(100% - 70px); /* Fill remaining width */
     z-index: 100; /* Ensure it's on top of everything */
+    height: 60px; /* Set a height for the top bar */
+
 }
 
 .file-name {
@@ -129,7 +131,7 @@ body {
     flex: 1;
     height: 100%;
     /* Adjust top margin to account for fixed top bar */
-    margin-top: 40px; /* Adjust as needed based on top bar height */
+    margin-top: 60px; /* Adjust as needed based on top bar height */
 }
 
 .line-numbers {
