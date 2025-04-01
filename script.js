@@ -28,15 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Collapse/Expand output area
     let isCollapsed = false; // Track collapse state
 
+    const updateCollapseButton = () => {
+        collapseButton.innerHTML = isCollapsed ? '<i class="fas fa-expand"></i>' : '<i class="fas fa-compress"></i>';
+    };
+
     collapseButton.addEventListener('click', () => {
         isCollapsed = !isCollapsed; // Toggle the state
         if (isCollapsed) {
             outputAreaContainer.style.flex = "0"; // Collapse
-            collapseButton.textContent = "Expand";
+
         } else {
             outputAreaContainer.style.flex = "1"; // Expand
-            collapseButton.textContent = "Collapse";
+
         }
+        updateCollapseButton();
     });
 
     // Handle Tab key in textarea
@@ -62,4 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial update when the page loads
     updateLineNumbers();
+    updateCollapseButton()
 });
