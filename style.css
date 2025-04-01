@@ -158,7 +158,7 @@ body {
 
 #line-numbers-container {
     display: block;
-    transform: translateY(5px);
+    transform: translateY(0px);
     font-weight: normal;
     /* Push line numbers to the very top */
     position: relative;
@@ -183,6 +183,11 @@ body {
 
 .code-editor {
     border-right: 1px solid #dee2e6;
+    padding-top: 20px;
+}
+
+.output-area{
+     padding-top: 20px;
 }
 
 textarea {
