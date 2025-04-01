@@ -160,7 +160,7 @@ body {
 
 #line-numbers-container {
     display: block;
-    /* transform: translateY(0px); /* Probably unnecessary */
+    transform: translateY(-15px); /* Probably unnecessary */
     font-weight: normal;
     box-sizing: border-box;
 }
