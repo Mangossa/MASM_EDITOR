@@ -20,23 +20,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
     height: 100%;
+    justify-content: flex-end; /* Push items to the bottom */
+    padding-bottom: 10px;     /* Add some padding at the bottom */
+    box-sizing: border-box;   /* Include padding in height calculation */
 }
 
 .sidebar-icon {
     width: 50px;
     height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;           /* Keep flex to center the image */
+    justify-content: center; /* Center image horizontally */
+    align-items: center;     /* Center image vertically */
     margin-bottom: 8px;
-    color: #495057;
     cursor: pointer;
     border: 1px solid #ced4da;
     background-color: transparent;
     outline: none;
     box-sizing: border-box;
+    padding: 0; /* Remove padding if you want image to fill more space */
+}
+
+.sidebar-icon img { /* Style for images inside sidebar buttons */
+    width: 24px;   /* Adjust size as needed */
+    height: 24px;  /* Adjust size as needed */
+    display: block; /* Prevents extra space below image */
+    object-fit: contain; /* Ensure image aspect ratio is maintained */
 }
 
 .sidebar-icon:hover {
@@ -49,6 +58,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden; /* Prevent main content from causing scrollbars */
 }
 
 /* Top Bar */
@@ -59,6 +69,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0; /* Prevent top bar from shrinking */
 }
 
 .file-name {
@@ -112,65 +123,79 @@ body {
 .output-label{
     padding: 8px 12px;
     margin-left: 5px;
+    color: #495057;
 }
 
 /* Editor Area */
 .editor-area {
     display: flex;
-    flex: 1;
-    height: 100%;
+    flex: 1; /* Allow this area to grow and shrink */
+    min-height: 0; /* Important for flex items in column layout */
+    overflow: hidden; /* Prevent editor area from causing scrollbars */
 }
 
 .line-numbers {
-    width: 40px;
-    background-color: #eee;
+    width: 50px; /* Slightly wider for potentially more digits */
+    background-color: #f0f0f0; /* Slightly different bg */
     color: #888;
     font-size: 14px;
     font-family: monospace;
-    padding: 10px 5px;
+    padding: 10px 5px 10px 0; /* Adjust padding */
     text-align: right;
     box-sizing: border-box;
-    white-space: pre-line;
     user-select: none;
     line-height: 1.4;
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* IMPORTANT: Remove scrolling from the line numbers */
-    overflow: hidden; /* Remove the scrollbar */
-    height: 100%;
+    overflow: hidden; /* Hide scrollbar */
+    flex-shrink: 0; /* Prevent line numbers from shrinking */
 }
 
 #line-numbers-container {
     display: block;
-    transform: translateY(5px);
+    padding-right: 5px; /* Space between number and editor border */
     font-weight: normal;
 }
 
-/* Individual Line Number */
 .line-number {
-    /* Ensure font-weight is normal */
-    font-weight: normal;
-}
-
-.code-editor,
-.output-area {
-    flex: 1;
-    padding: 20px;
-    height: 100%;
+    font-weight: normal; /* Ensure font-weight is normal */
+    height: calc(14px * 1.4); /* Match textarea line-height */
     box-sizing: border-box;
-    position: relative; /* For positioning the collapse button */
 }
 
 .code-editor {
+    flex: 1; /* Code editor takes available space */
     border-right: 1px solid #dee2e6;
+    display: flex; /* Use flex to make textarea fill */
+    min-width: 0; /* Important for flex items */
+    position: relative; /* For potential future absolute elements */
 }
 
-textarea {
-    width: 100%;
+/* Output Area Container */
+.output-area {
+    flex: 1; /* Initially take up space */
+    display: flex; /* Use flex for children */
+    flex-direction: column; /* Stack button and textarea */
+    min-width: 0; /* Important for flex items */
     height: 100%;
+    box-sizing: border-box;
+    position: relative; /* For positioning the collapse button */
+    background-color: #f8f9fa; /* Match body bg */
+    transition: flex 0.3s ease, padding 0.3s ease; /* Smooth transition for flex and padding */
+    padding: 20px; /* Initial padding */
+    border-left: 1px solid #dee2e6; /* Separator border */
+}
+
+.output-area.collapsed {
+    flex: 0 0 0px; /* Collapse completely */
+    padding: 0;
+    overflow: hidden; /* Hide content when collapsed */
+    border-left: none; /* Hide border when collapsed */
+}
+
+
+textarea#code-editor,
+textarea#output-area {
+    width: 100%;
+    height: 100%; /* Fill parent */
     border: none;
     padding: 10px;
     font-family: monospace;
@@ -178,42 +203,59 @@ textarea {
     resize: none;
     outline: none;
     box-sizing: border-box;
-    background-color: #f8f9fa;
+    background-color: transparent; /* Inherit from parent or set explicitly */
     line-height: 1.4;
     margin: 0;
-    padding: 0;
-    vertical-align: top;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: auto;      /* Enable horizontal scrolling */
-    white-space: nowrap;   /* Prevent wrapping */
-    overflow-y: scroll;     /* Keep vertical scroll */
+    white-space: pre;      /* Allow wrapping AND preserve spaces/newlines correctly */
+    overflow-y: scroll;    /* Keep vertical scroll */
+    flex-grow: 1; /* Allow textareas to grow within flex containers */
+    min-height: 0; /* Required for textarea in flex */
+}
+
+textarea#code-editor {
+    background-color: #ffffff; /* Give editor a distinct background */
+    white-space: pre; /* Crucial for code formatting */
+    padding-top: 10px; /* Match line number padding */
+}
+
+textarea#output-area {
+     background-color: #f8f9fa; /* Match container background */
+     height: calc(100% - 40px); /* Adjust height considering collapse button */
+     margin-top: 5px; /* Space below button */
 }
 
 /* Collapse Button */
 .collapse-button {
-    position: absolute;
+    position: absolute; /* Position relative to output-area */
     top: 10px;
-    left: 10px;
-    background-color: #f8f9fa;
+    left: 10px; /* Keep it left */
+    background-color: #e9ecef;
     border: 1px solid #ced4da;
     color: #495057;
-    padding: 5px 10px;
+    padding: 5px 8px; /* Slightly smaller padding */
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
     z-index: 10; /* Ensure it's on top */
+    line-height: 1; /* Prevent extra height */
+    height: 28px; /* Explicit height */
+    width: 28px; /* Explicit width for square look */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .collapse-button:hover {
-    background-color: #e9ecef;
+    background-color: #d_dd_e_1; /* Slightly darker hover */
 }
-.output-area {
-    flex: 1;
-    padding: 20px;
-    height: 100%;
-    box-sizing: border-box;
-    position: relative; /* For positioning the collapse button */
-    transition: flex 0.3s ease; /* Add a transition for smooth animation */
+
+/* Style for image inside the collapse/expand button */
+.collapse-button img {
+    width: 14px; /* Adjust size as needed */
+    height: 14px; /* Adjust size as needed */
+    display: block; /* Prevent extra space */
 }
