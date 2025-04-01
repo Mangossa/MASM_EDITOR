@@ -162,7 +162,6 @@ body {
     display: block;
     /* transform: translateY(0px); /* Probably unnecessary */
     font-weight: normal;
-    padding-top: 10px; /* Match textarea top padding */
     box-sizing: border-box;
 }
 
