@@ -161,7 +161,11 @@ body {
 #line-numbers-container {
     display: block;
     font-weight: normal;
+    /* padding-top: 10px; */ /* Keep this removed or commented out */
     box-sizing: border-box;
+    /* Add the following two lines: */
+    position: relative;
+    top: -2px; /* Adjust this value (-1px, -3px, etc.) as needed */
 }
 
 /* Individual Line Number */
