@@ -22,9 +22,6 @@ body {
     align-items: center;
     padding-top: 10px;
     height: 100%;
-    /* Push icons to the bottom */
-    justify-content: flex-end; /* Aligns items to the bottom */
-    padding-bottom: 10px; /* Add some padding at the bottom */
 }
 
 .sidebar-icon {
@@ -60,16 +57,8 @@ body {
     padding: 10px 20px;
     border-bottom: 1px solid #dee2e6;
     display: flex;
-    justify-content: flex-start; /* Alling everything to the left */
+    justify-content: space-between;
     align-items: center;
-    /* Make it fixed */
-    position: fixed;
-    top: 0;
-    left: 0;  /* Set left to 0 to shift to the left */
-    width: 100%; /* Set the width */
-    z-index: 100; /* Ensure it's on top of everything */
-    height: 60px; /* Set a height for the top bar */
-
 }
 
 .file-name {
@@ -80,7 +69,6 @@ body {
 .top-buttons {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Push the buttons to the right */
 }
 
 .top-button {
@@ -101,10 +89,6 @@ body {
     background-color: #17a2b8; /* Teal/Cyan */
     color: white;
     border-color: #17a2b8;
-     /* Absolutely position the Run button over the code editor */
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 
 .run-button:hover {
@@ -134,9 +118,7 @@ body {
 .editor-area {
     display: flex;
     flex: 1;
-    height: calc(100% - 60px); /* Subtract top bar height */
-    /* Adjust top margin to account for fixed top bar */
-    margin-top: 60px; /* Adjust as needed based on top bar height */
+    height: 100%;
 }
 
 .line-numbers {
@@ -156,8 +138,8 @@ body {
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
-    /* Ensure it fills the height of the editor area */
+    /* IMPORTANT: Remove scrolling from the line numbers */
+    overflow: hidden; /* Remove the scrollbar */
     height: 100%;
 }
 
@@ -165,9 +147,6 @@ body {
     display: block;
     transform: translateY(5px);
     font-weight: normal;
-    /* Push line numbers to the very top */
-    position: relative;
-    top: 0;
 }
 
 /* Individual Line Number */
@@ -183,16 +162,10 @@ body {
     height: 100%;
     box-sizing: border-box;
     position: relative; /* For positioning the collapse button */
-    transition: flex 0.3s ease; /* Add a transition for smooth animation */
 }
 
 .code-editor {
     border-right: 1px solid #dee2e6;
-    padding-top: 20px;
-}
-
-.output-area{
-     padding-top: 20px;
 }
 
 textarea {
@@ -213,27 +186,34 @@ textarea {
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: auto;
-    white-space: nowrap;
-    overflow-y: scroll;
+    overflow-x: auto;      /* Enable horizontal scrolling */
+    white-space: nowrap;   /* Prevent wrapping */
+    overflow-y: scroll;     /* Keep vertical scroll */
 }
 
 /* Collapse Button */
 .collapse-button {
     position: absolute;
-    /* Move it lower */
-    top: 10px; /* Adjust this value as needed */
+    top: 10px;
     left: 10px;
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
     color: #495057;
-    padding: 8px 12px;
+    padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     z-index: 10; /* Ensure it's on top */
 }
 
 .collapse-button:hover {
     background-color: #e9ecef;
+}
+.output-area {
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative; /* For positioning the collapse button */
+    transition: flex 0.3s ease; /* Add a transition for smooth animation */
 }
