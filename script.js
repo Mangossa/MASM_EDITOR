@@ -10,11 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const lines = code.split('\n');
 
         let lineNumbersHTML = '';
-        for (let i = 1; i <= lines.length; i++) {
-            const lineNumber = String(i).padStart(4, ' ');
-            lineNumbersHTML += `<div class="line-number">${lineNumber}</div>`;
+        // Ensure at least one line number exists, even if code is empty
+        if (lines.length === 0) {
+            lineNumbersHTML = `<div class="line-number">${String(1).padStart(4, ' ')}</div>`;
+        } else {
+            for (let i = 1; i <= lines.length; i++) {
+                const lineNumber = String(i).padStart(4, ' ');
+                lineNumbersHTML += `<div class="line-number">${lineNumber}</div>`;
+            }
         }
-
         lineNumbersContainer.innerHTML = lineNumbersHTML;
     };
 
