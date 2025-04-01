@@ -65,8 +65,8 @@ body {
     /* Make it fixed */
     position: fixed;
     top: 0;
-    left: 70px;  /* Match sidebar width */
-    width: calc(100% - 70px); /* Fill remaining width */
+    left: 0;  /* Set left to 0 to shift to the left */
+    width: calc(100% - 0px); /* Set the width */
     z-index: 100; /* Ensure it's on top of everything */
     height: 60px; /* Set a height for the top bar */
 
@@ -158,7 +158,7 @@ body {
 
 #line-numbers-container {
     display: block;
-    transform: translateY(0px);
+    transform: translateY(5px);
     font-weight: normal;
     /* Push line numbers to the very top */
     position: relative;
@@ -217,16 +217,17 @@ textarea {
 .collapse-button {
     position: absolute;
     /* Move it lower */
-    top: 30px; /* Adjust this value as needed */
+    top: 10px; /* Adjust this value as needed */
     left: 10px;
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
     color: #495057;
-    padding: 5px 10px;
+    padding: 2px 4px; /* Reduced padding */
     border-radius: 4px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px; /* Reduced font size */
     z-index: 10; /* Ensure it's on top */
+    line-height: 1; /* Adjust line-height for better icon alignment */
 }
 
 .collapse-button:hover {
