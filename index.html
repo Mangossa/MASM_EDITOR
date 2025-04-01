@@ -1,58 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    height: 100vh;
+    overflow: hidden;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Compiler</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+.container {
+    display: flex;
+    height: 100%;
+}
 
-<body>
+/* Sidebar */
+.sidebar {
+    width: 70px;
+    background-color: #fff;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    height: 100%;
+    /* Push icons to the bottom */
+    justify-content: flex-end; /* Aligns items to the bottom */
+    padding-bottom: 10px; /* Add some padding at the bottom */
+}
 
-    <div class="container">
-        <div class="sidebar">
-            <button class="sidebar-icon"><i class="fas fa-file-code"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-chart-bar"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-database"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-cog"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-coffee"></i></button>
-            <button class="sidebar-icon"><i class="fab fa-cuttlefish"></i></button>
-            <button class="sidebar-icon"><i class="fab fa-js"></i></button>
-            <button class="sidebar-icon"><i class="fas fa-dharmachakra"></i></button>
-            <button class="sidebar-icon"><i class="fab fa-php"></i></button>
-        </div>
+.sidebar-icon {
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #495057;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    background-color: transparent;
+    outline: none;
+    box-sizing: border-box;
+}
 
-        <div class="main-content">
-            <div class="top-bar">
-                <div class="file-name">main.cpp</div>
-                <div class="top-buttons">
-                    <button class="top-button"></button>
-                    <button class="top-button"></button>
-                    <button class="top-button"></button>
-                    <button class="top-button run-button">Run</button>
-                    <div class="output-label">Output</div>
-                    <button class="top-button clear-button">Clear</button>
-                </div>
-            </div>
+.sidebar-icon:hover {
+    background-color: #e9ecef;
+}
 
-            <div class="editor-area">
-                <div class="line-numbers">
-                    <div id="line-numbers-container">1</div>
-                </div>
-                <div class="code-editor">
-                    <textarea id="code-editor" placeholder="// Online MASM 86x compiler..."></textarea>
-                </div>
-                <div class="output-area" id="output-area-container">
-                    <button class="collapse-button" id="collapse-output">Collapse</button>
-                    <textarea id="output-area" readonly placeholder=""></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-    <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</body>
+/* Top Bar */
+.top-bar {
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Make it fixed */
+    position: fixed;
+    top: 0;
+    left: 70px;  /* Match sidebar width */
+    width: calc(100% - 70px); /* Fill remaining width */
+    z-index: 100; /* Ensure it's on top of everything */
+}
 
-</html>
+.file-name {
+    font-weight: bold;
+    color: #495057;
+}
+
+.top-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.top-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.top-button:hover {
+    background-color: #e9ecef;
+}
+
+.run-button {
+    background-color: #17a2b8; /* Teal/Cyan */
+    color: white;
+    border-color: #17a2b8;
+}
+
+.run-button:hover {
+    background-color: #138496;
+}
+
+.clear-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.clear-button:hover {
+    background-color: #e9ecef;
+}
+
+.output-label{
+    padding: 8px 12px;
+    margin-left: 5px;
+}
+
+/* Editor Area */
+.editor-area {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    /* Adjust top margin to account for fixed top bar */
+    margin-top: 40px; /* Adjust as needed based on top bar height */
+}
+
+.line-numbers {
+    width: 40px;
+    background-color: #eee;
+    color: #888;
+    font-size: 14px;
+    font-family: monospace;
+    padding: 10px 5px;
+    text-align: right;
+    box-sizing: border-box;
+    white-space: pre-line;
+    user-select: none;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    height: 100%;
+}
+
+#line-numbers-container {
+    display: block;
+    transform: translateY(5px);
+    font-weight: normal;
+}
+
+/* Individual Line Number */
+.line-number {
+    /* Ensure font-weight is normal */
+    font-weight: normal;
+}
+
+.code-editor,
+.output-area {
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative; /* For positioning the collapse button */
+    transition: flex 0.3s ease; /* Add a transition for smooth animation */
+}
+
+.code-editor {
+    border-right: 1px solid #dee2e6;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: scroll;
+}
+
+/* Collapse Button */
+.collapse-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #495057;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 10; /* Ensure it's on top */
+}
+
+.collapse-button:hover {
+    background-color: #e9ecef;
+}
